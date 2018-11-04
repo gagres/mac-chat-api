@@ -36,7 +36,7 @@ export default({ config, db }) => {
   api.get('/:id', authenticate, (req, res) => {
     Channel.findById(req.params.id, (err, channel) => {
       if (err) {
-        res.status(500).json({ message: err });
+        return res.status(500).json({ message: err });
       }
       res.status(200).json(channel);
     });
@@ -48,7 +48,7 @@ export default({ config, db }) => {
       _id: req.params.id
     }, (err, channel) => {
       if (err) {
-        res.status(500).json({ message: err });
+        return res.status(500).json({ message: err });
       }
       res.status(200).json({ message: 'Channel Successfully Removed'});
     });
